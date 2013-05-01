@@ -1,11 +1,6 @@
-﻿using System;
-using Microsoft.Xrm.Sdk;
+﻿using Microsoft.Xrm.Sdk;
 using Microsoft.Xrm.Sdk.Client;
-using Microsoft.Xrm.Sdk.Query;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
-using System.Threading.Tasks;
+using System;
 
 namespace NotesByHand.Utilities
 {
@@ -39,7 +34,7 @@ namespace NotesByHand.Utilities
             _svcConfig =
                 ServiceConfigurationFactory.CreateConfiguration<IOrganizationService>(
                 new Uri(@"https://" + OrgName + ".crm.dynamics.com/XRMServices/2011/Organization.svc"),
-                (sender, args) => DiscoveryServiceConfigurationMetadataLoaded(sender, args)
+                (sender, args) => MetadataLoaded(sender, args)
                 ) as OrganizationServiceConfiguration;
         }
 
@@ -53,7 +48,7 @@ namespace NotesByHand.Utilities
             return orgName;
         }
 
-        private static void DiscoveryServiceConfigurationMetadataLoaded(object sender, ServiceMetadataLoadedEventArgs e)
+        private static void MetadataLoaded(object sender, ServiceMetadataLoadedEventArgs e)
         {
             LogonAsync();
         }

@@ -122,6 +122,7 @@
     </Compile>
     <Compile Include="Utilities\CrmConnector.cs" />
     <Compile Include="Utilities\ExtensionMethods.cs" />
+    <Compile Include="Utilities\Fetches.cs" />
     <Compile Include="ViewModels\ContactsNotesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

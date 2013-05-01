@@ -41,22 +41,8 @@ namespace NotesByHand.ViewModels
         //methods
         public async void LoadContactsAsync()
         {
-            var fetch = new FetchExpression(
-                @"<fetch distinct='false'>
-                    <entity name='contact'>
-                        <attribute name='fullname' />
-                        <attribute name='parentcustomerid' />
-                        <attribute name='telephone1' />
-                        <attribute name='emailaddress1' />
-                        <attribute name='contactid' />
-                        <order attribute='fullname' descending='false' />
-                        <filter type='and'>
-                            <condition attribute='statecode' operator='eq' value='0' />
-                        </filter>
-                    </entity>
-                </fetch>");
-
-            Contacts = await CrmConnector.OrgServiceProxy.RetrieveMultipleAsync<Contact>(fetch);
+            Contacts = await CrmConnector.OrgServiceProxy.
+                RetrieveMultipleAsync<Contact>(Fetches.ContactsForBasicPage1);
 
             foreach (Contact c in Contacts)
             {
@@ -88,11 +74,6 @@ namespace NotesByHand.ViewModels
                     the specified ContactId exists.");
         }
 
-        public void RequestSingleContact(string username, string password, string orgName, string id)
-        {
-            
-        }
-
         public async void PostNote(Contact contact, string noteText)
         {
             var note = new Annotation();
@@ -100,11 +81,6 @@ namespace NotesByHand.ViewModels
             note.ObjectId = new EntityReference("contact", contact.Id);
 
             await CrmConnector.OrgServiceProxy.CreateAsync(note);
-        }
-
-        public async void UpdateContact(Contact contact)
-        {
-            CrmConnector.OrgServiceProxy.Update(contact);
         }
     }
 }

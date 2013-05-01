@@ -1,18 +1,9 @@
 ﻿using Microsoft.Xrm.Sdk.Client;
 using NotesByHand.Utilities;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
@@ -40,10 +31,6 @@ namespace NotesByHand
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            // TODO -remove this
-            usernameBox.Text = "anschult@psecdemo.onmicrosoft.com";
-            passwordBox.Password = "CrmD3mo!";
-
             usernameBox.IsEnabled = false;
             passwordBox.IsEnabled = false;
             var button = sender as Button;
